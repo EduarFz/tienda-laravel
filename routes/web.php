@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\CruddispositivosController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DispositivoController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DetalleController;
 
 
 
@@ -84,10 +85,7 @@ Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edi
 Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
 
 
-
-
-
-
+Route::get('/detalles/{id}', [DetalleController::class, 'show'])->name('detalles.show');
 
 require __DIR__ . '/settings.php';
 require __DIR__ . '/auth.php';

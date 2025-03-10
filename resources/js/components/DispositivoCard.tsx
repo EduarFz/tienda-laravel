@@ -45,12 +45,12 @@ const DispositivoCard: React.FC<Props> = ({ dispositivo, onAddToCart }) => {
                     margin: '8px 4px',
                 }}
                 onClick={() => {
-                    alert('Ver más: ' + dispositivo.id);
+                    window.location.href = `/detalles/${dispositivo.id}`;
                 }}
             >
                 Ver más
             </button>
-            <button
+            {/* <button
                 style={{
                     backgroundColor: addedToCart ? '#28a745' : '#dc3545',
                     color: 'white',
@@ -63,7 +63,7 @@ const DispositivoCard: React.FC<Props> = ({ dispositivo, onAddToCart }) => {
                 onClick={handleAddToCart}
             >
                 {addedToCart ? 'Agregado' : 'Agregar al carrito'}
-            </button>
+            </button> */}
         </div>
     );
 };

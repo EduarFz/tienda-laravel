@@ -8,14 +8,9 @@ use Inertia\Inertia;
 
 class DispositivoController extends Controller
 {
-    public function show($id)
-    {
-        $dispositivo = Dispositivo::with('comentarios.user')->findOrFail($id);
-        
-        return Inertia::render('DispositivoDetalle', [
-            'dispositivo' => $dispositivo
-        ]);
-    }
+
+   
+    
 
 
     // Método para mostrar la lista de dispositivos

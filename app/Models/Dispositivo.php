@@ -33,13 +33,4 @@ class Dispositivo extends Model
     return $this->hasMany(Comentario::class);
 }
 
-    public function carritos()
-    {
-        return $this->hasMany(Carrito::class);
-    }
-
-    public function compras()
-    {
-        return $this->belongsToMany(Compra::class, 'compra_dispositivo')->withPivot('cantidad');
-    }
 }

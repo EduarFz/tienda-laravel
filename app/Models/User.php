@@ -59,15 +59,5 @@ class User extends Authenticatable
         return $this->hasMany(Comentario::class);
     }
 
-    public function carritos()
-    {
-        return $this->hasMany(Carrito::class);
-    }
-
-
-
-    public function compras()
-    {
-        return $this->hasMany(Compra::class);
-    }
+    
 }

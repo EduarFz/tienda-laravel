@@ -14,11 +14,7 @@ const mainNavItems: NavItem[] = [
         icon: LayoutGrid,
     },
 
-    {
-        title: 'Users',
-        url: '/users',
-        icon: LayoutGrid,
-    }
+    
 ];
 
 const footerNavItems: NavItem[] = [

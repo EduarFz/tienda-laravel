@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Inertia } from '@inertiajs/inertia';
 import AdminLayout from '@/layouts/admin-layout';
 import DispositivoCard from '@/components/DispositivoCard';
+import AppLayout from '@/layouts/app-layout';
 
 interface Dispositivo {
     id: number;
@@ -32,7 +33,7 @@ const Dashboard: React.FC<Props> = ({ dispositivos }) => {
     };
 
     return (
-        <AdminLayout>
+        <AppLayout>
             <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
                 <h1 style={{ marginBottom: '20px', color: '#333' }}>Dashboard</h1>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
@@ -51,7 +52,7 @@ const Dashboard: React.FC<Props> = ({ dispositivos }) => {
                     ))}
                 </div>
             </div>
-        </AdminLayout>
+        </AppLayout>
     );
 };
 
