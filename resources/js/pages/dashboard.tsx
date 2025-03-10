@@ -1,35 +1,58 @@
-import { PlaceholderPattern } from '@/components/ui/placeholder-pattern';
-import AppLayout from '@/layouts/app-layout';
-import { type BreadcrumbItem } from '@/types';
-import { Head } from '@inertiajs/react';
+import React, { useState } from 'react';
+import { Inertia } from '@inertiajs/inertia';
+import AdminLayout from '@/layouts/admin-layout';
+import DispositivoCard from '@/components/DispositivoCard';
 
-const breadcrumbs: BreadcrumbItem[] = [
-    {
-        title: 'Dashboard',
-        href: '/dashboard',
-    },
-];
+interface Dispositivo {
+    id: number;
+    modelo: string;
+    marca: string;
+    año: number;
+    memoria_ram: string;
+    almacenamiento: string;
+    imagen: string;
+    precio: number; // Agregar el campo precio
+}
 
-export default function Dashboard() {
+interface Props {
+    dispositivos: Dispositivo[];
+}
+
+const Dashboard: React.FC<Props> = ({ dispositivos }) => {
+    const [cartCount, setCartCount] = useState(0);
+
+    const handleAddToCart = (id: number, addedToCart: boolean) => {
+        if (addedToCart) {
+            // Si el dispositivo ya estaba en el carrito, restar 1
+            setCartCount((prevCount) => prevCount - 1);
+        } else {
+            // Si el dispositivo no estaba en el carrito, sumar 1
+            setCartCount((prevCount) => prevCount + 1);
+        }
+    };
+
     return (
-        <AppLayout breadcrumbs={breadcrumbs}>
-            <Head title="Dashboard" />
-            <div className="flex h-full flex-1 flex-col gap-4 rounded-xl p-4">
-                <div className="grid auto-rows-min gap-4 md:grid-cols-3">
-                    <div className="border-sidebar-border/70 dark:border-sidebar-border relative aspect-video overflow-hidden rounded-xl border">
-                        <PlaceholderPattern className="absolute inset-0 size-full stroke-neutral-900/20 dark:stroke-neutral-100/20" />
-                    </div>
-                    <div className="border-sidebar-border/70 dark:border-sidebar-border relative aspect-video overflow-hidden rounded-xl border">
-                        <PlaceholderPattern className="absolute inset-0 size-full stroke-neutral-900/20 dark:stroke-neutral-100/20" />
-                    </div>
-                    <div className="border-sidebar-border/70 dark:border-sidebar-border relative aspect-video overflow-hidden rounded-xl border">
-                        <PlaceholderPattern className="absolute inset-0 size-full stroke-neutral-900/20 dark:stroke-neutral-100/20" />
+        <AdminLayout>
+            <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
+                <h1 style={{ marginBottom: '20px', color: '#333' }}>Dashboard</h1>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+                    <h2>Dispositivos</h2>
+                    <div style={{ backgroundColor: '#007bff', color: 'white', padding: '8px 16px', borderRadius: '4px' }}>
+                        Carrito: {cartCount}
                     </div>
                 </div>
-                <div className="border-sidebar-border/70 dark:border-sidebar-border relative min-h-[100vh] flex-1 overflow-hidden rounded-xl border md:min-h-min">
-                    <PlaceholderPattern className="absolute inset-0 size-full stroke-neutral-900/20 dark:stroke-neutral-100/20" />
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px' }}>
+                    {dispositivos.map((dispositivo) => (
+                        <DispositivoCard
+                            key={dispositivo.id}
+                            dispositivo={dispositivo}
+                            onAddToCart={(id, addedToCart) => handleAddToCart(id, addedToCart)}
+                        />
+                    ))}
                 </div>
             </div>
-        </AppLayout>
+        </AdminLayout>
     );
-}
+};
+
+export default Dashboard;

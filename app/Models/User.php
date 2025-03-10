@@ -12,6 +12,8 @@ class User extends Authenticatable
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
+    protected $table = 'users'; // Configura la tabla si es diferente a 'users'
+
     /**
      * The attributes that are mass assignable.
      *
@@ -30,7 +32,7 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $hidden = [
-        'password',
+        // 'password',
         'remember_token',
     ];
 
@@ -48,8 +50,24 @@ class User extends Authenticatable
     }
 
     public function isAdmin(): bool
-{
-    return $this->role === 'admin';
-}
+    {
+        return $this->role === 'admin';
+    }
 
+    public function comentarios()
+    {
+        return $this->hasMany(Comentario::class);
+    }
+
+    public function carritos()
+    {
+        return $this->hasMany(Carrito::class);
+    }
+
+
+
+    public function compras()
+    {
+        return $this->hasMany(Compra::class);
+    }
 }

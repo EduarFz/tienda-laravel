@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Login: React.FC = () => {
+const Ed: React.FC = () => {
   return (
-    <div>
-      <h1>ed</h1>
-    </div>
+	<div>
+	  <h1>Hello, Ed!</h1>
+	</div>
   );
 };
 
-export default Login;
+export default Ed;

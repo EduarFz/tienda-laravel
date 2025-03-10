@@ -16,7 +16,7 @@ const mainNavItems: NavItem[] = [
 
     {
         title: 'CRUD usuarios',
-        url: '/cruduser',
+        url: '/user',
         icon: User,
     },
 
