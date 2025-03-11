@@ -87,5 +87,19 @@ Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update
 
 Route::get('/detalles/{id}', [DetalleController::class, 'show'])->name('detalles.show');
 
+
+// Ruta para crear comentarios en un dispositivo específico
+Route::post('/detalles/{id}/comentarios', [DetalleController::class, 'storeComentario'])->name('detalles.comentarios.store');
+
+
+// Ruta para crear comentarios en un dispositivo específico
+Route::post('/detalles/{id}/comentarios', [DetalleController::class, 'storeComentario'])->name('detalles.comentarios.store');
+
+// Ruta para editar un comentario
+Route::put('/comentarios/{id}', [DetalleController::class, 'updateComentario'])->name('comentarios.update');
+
+// Ruta para eliminar un comentario
+Route::delete('/comentarios/{id}', [DetalleController::class, 'destroyComentario'])->name('comentarios.destroy');
+
 require __DIR__ . '/settings.php';
 require __DIR__ . '/auth.php';
